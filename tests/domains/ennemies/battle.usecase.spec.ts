@@ -12,7 +12,7 @@ class MockEnemyEventBus extends EventBus<EnemyEventMap> {
     keyof EnemyEventMap,
     {
       subscriberName: string
-      callback: (data: EnemyEventMap[keyof EnemyEventMap]) => void
+      callback: () => void
     }[]
   > = {
     enemyBattle: [],
