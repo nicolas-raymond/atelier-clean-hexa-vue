@@ -8,9 +8,9 @@
         <h2 v-text="enemy.name" />
         <div class="container">
           <CommonButton
-            :label="enemy.isAlive ? 'Attaquer' : 'Mort'"
+            :label="enemy.isAlive ? 'Attaquer' : 'Mort'" <!-- ne devrait pas être fait ici -->
             :on-click="() => onAttack(enemy.name)"
-            :disabled="!enemy.isAlive || !enemy.canBeAttacked"
+            :disabled="!enemy.isAlive || !enemy.canBeAttacked" <!-- ne devrait pas être fait ici -->
           />
           <CommonBadge :text="enemy.awardGold" image-src="/images/gold.png" alt-text="gold" />
         </div>
