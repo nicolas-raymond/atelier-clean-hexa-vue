@@ -36,5 +36,8 @@ export class Enemy {
 export class GetAllEnnemies {
   constructor(private readonly repository: EnemiesRepository) {}
 
-  async execute(strengthOfSoldier: number, presenter: EnemiesPresenter): Promise<void> {}
+  async execute(strengthOfSoldier: number, presenter: EnemiesPresenter): Promise<void> {
+    const enemies = await this.repository.getAllEnnemies()
+    presenter.present(enemies, strengthOfSoldier)
+  }
 }

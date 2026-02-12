@@ -8,5 +8,9 @@ export class BattleUsecase {
     private readonly eventBus: EventBus<EnemyEventMap>,
   ) {}
 
-  async execute(enemyName: string, soldierStrength: number) {}
+  async execute(enemyName: string, soldierStrength: number) {
+    const enemies = await this.repository.getAllEnnemies()
+    await this.repository.saveEnemy(enemies.filter((e) => e.name === enemyName))
+    this.eventBus.publish('battle')
+  }
 }

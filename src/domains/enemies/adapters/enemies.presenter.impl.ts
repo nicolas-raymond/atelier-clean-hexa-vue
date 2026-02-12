@@ -16,5 +16,17 @@ export type EnemiesViewModel = { enemies: EnemyViewModel[] }
 export class EnemiesPresenterImpl implements EnemiesPresenter {
   constructor(private readonly callback: (enemiesViewModel: EnemiesViewModel) => void) {}
 
-  present(enemies: Enemy[], strengthOfSoldier: number): void {}
+  present(enemies: Enemy[], strengthOfSoldier: number): void {
+    this.callback({
+      enemies: enemies.map((enemy) => ({
+        name: enemy.name,
+        avatar: enemy.avatar,
+        healthPoint: enemy.healthPoint,
+        awardGold: enemy.awardGold,
+        isAlive: enemy.alive,
+        canBeAttacked: strengthOfSoldier >= enemy.healthPoint,
+        img: '',
+      })),
+    })
+  }
 }
