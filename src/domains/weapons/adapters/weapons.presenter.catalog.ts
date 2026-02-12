@@ -20,5 +20,15 @@ export class WeaponsCataloguePresenter implements WeaponsPresenter {
     private readonly callback: (weaponsCatalogViewModel: WeaponsCatalogViewModel) => void,
   ) {}
 
-  present(weapons: Weapons[], amountOfGoldAvailable: number): void {}
+  present(weapons: Weapons[], amountOfGoldAvailable: number): void {
+    this.callback({
+      items: weapons.map((w) => ({
+        addToCartButton: { disabled: !w.canBuy(amountOfGoldAvailable), label: 'Acheter' },
+        image: '/images/' + w.image,
+        price: w.price,
+        strength: w.strenght,
+        title: w.title,
+      })),
+    })
+  }
 }

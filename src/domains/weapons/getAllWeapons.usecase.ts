@@ -38,5 +38,8 @@ export class Weapons {
 export class GetAllWeaponsUsecase {
   constructor(private readonly repository: WeaponsRepository) {}
 
-  async execute(goldOfSoldier: number, presenter: WeaponsPresenter): Promise<void> {}
+  async execute(goldOfSoldier: number, presenter: WeaponsPresenter): Promise<void> {
+    const weapons = await this.repository.getAllWeapons();
+    presenter.present(weapons, goldOfSoldier);
+  }
 }
